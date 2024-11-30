@@ -1,0 +1,29 @@
+.main-footer {
+    padding: 4rem 7%;
+    background-color: var(--textcolor);
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-content {
+    flex: 1 1 200px;
+    text-align: center;
+}
+
+.footer-content h1 {
+    color: white;
+    font-size: 25px;
+}
+
+.link a {
+    display: block;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin: 0.5rem;
+}

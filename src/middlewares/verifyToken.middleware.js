@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/user.model");
 const doctorModel = require("../models/doctor.model");
-const { logger } = require("../middlewares/logger.middleware");
 const configObject = require("../config/env.config");
 
 class AuthMiddleware {
@@ -58,7 +57,6 @@ class AuthMiddleware {
       }
       next();
     } catch (error) {
-      logger.error("Error en el middleware restrict:", error);
       return res.status(500).json({
         success: false,
         message: "Error en la verificación de roles.",
