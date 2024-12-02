@@ -21,6 +21,12 @@ const configObject = {
     log_to_file: process.env.LOG_TO_FILE,
     log_file_name: process.env.LOG_FILE_NAME,
   },
+  mailer: {
+    mailer_user: process.env.MAILER_USER,
+    mailer_pass: process.env.MAILER_PASS,
+    email_from: process.env.EMAIL_FROM,
+    email_service: process.env.EMAIL_SERVICE,
+  },
 };
 
 module.exports = configObject;

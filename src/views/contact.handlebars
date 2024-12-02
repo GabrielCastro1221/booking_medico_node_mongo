@@ -10,7 +10,7 @@
                     <input type="text" name="from_name" id="from_name" class="name" placeholder="Ingrese su nombre">
                 </div>
                 <div class="inputBox">
-                    <input type="email" name="from_email" id="from_email" class="email" placeholder="Ingrese su email">
+                    <input type="email" name="email_id" id="email_id" class="email" placeholder="Ingrese su email">
                 </div>
                 <div class="inputBox">
                     <textarea name="message" id="message" class="message" placeholder="Ingrese su mensaje"></textarea>
@@ -49,3 +49,9 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+    emailjs.init('JhHysHW-A9kzYqiIR')
+</script>
+<script src="/js/contact/contact.js"></script>

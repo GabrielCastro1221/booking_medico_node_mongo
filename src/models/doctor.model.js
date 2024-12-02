@@ -8,6 +8,7 @@ const schema = new Schema({
   ticket_price: { type: Number },
   bio: { type: String },
   about: { type: String },
+  photo: { type: String },
   role: { type: String },
   specialization: { type: String },
   education: { type: Array },

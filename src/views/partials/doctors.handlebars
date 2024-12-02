@@ -1,88 +1,26 @@
-<link rel="stylesheet" href="/css/doctors/doctors.css">
+<link rel="stylesheet" href="/css/doctors/doctors.css" />
 
 <div class="main-doctors">
-    <div class="doctors-heading">
-        <h2>Our Doctors</h2>
-    </div>
-    <div class="main-inner-doctor">
+  <div class="doctors-heading">
+    <h2>Nuestro Equipo</h2>
+  </div>
+  <div class="main-inner-doctor">
+    {{#if doctors}}
+      {{#each doctors}}
         <div class="doc-poster">
-            <div class="doc-icons">
-                <i class="fa-solid fa-share"></i>
-                <i class="fa-solid fa-eye"></i>
-                <i class="fa-solid fa-heart"></i>
-            </div>
-            <img src="/assets/img/team1.jpg" alt="">
-            <div class="doc-details">
-                <h2>Mr Joe</h2>
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-instagram"></i>
-            </div>
+          <div class="doc-icons">
+            <a href="/doctores/{{this._id}}">
+              <i class="fa-solid fa-eye"></i>
+            </a>
+          </div>
+          <img src="{{this.photo}}" alt="{{this.name}}" class="doc-photo" />
+          <div class="doc-details mb-3">
+            <h2>{{this.name}}</h2>
+          </div>
         </div>
-        <div class="doc-poster">
-            <div class="doc-icons">
-                <i class="fa-solid fa-share"></i>
-                <i class="fa-solid fa-eye"></i>
-                <i class="fa-solid fa-heart"></i>
-            </div>
-            <img src="/assets/img/team2.jpg" alt="">
-            <div class="doc-details">
-                <h2>Mr Joe</h2>
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-instagram"></i>
-            </div>
-        </div>
-        <div class="doc-poster">
-            <div class="doc-icons">
-                <i class="fa-solid fa-share"></i>
-                <i class="fa-solid fa-eye"></i>
-                <i class="fa-solid fa-heart"></i>
-            </div>
-            <img src="/assets/img/team3.jpg" alt="">
-            <div class="doc-details">
-                <h2>Mr Joe</h2>
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-instagram"></i>
-            </div>
-        </div>
-        <div class="doc-poster">
-            <div class="doc-icons">
-                <i class="fa-solid fa-share"></i>
-                <i class="fa-solid fa-eye"></i>
-                <i class="fa-solid fa-heart"></i>
-            </div>
-            <img src="/assets/img/team4.jpg" alt="">
-            <div class="doc-details">
-                <h2>Mr Joe</h2>
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-instagram"></i>
-            </div>
-        </div>
-        <div class="doc-poster">
-            <div class="doc-icons">
-                <i class="fa-solid fa-share"></i>
-                <i class="fa-solid fa-eye"></i>
-                <i class="fa-solid fa-heart"></i>
-            </div>
-            <img src="/assets/img/team5.jpg" alt="">
-            <div class="doc-details">
-                <h2>Mr Joe</h2>
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-instagram"></i>
-            </div>
-        </div>
-        <div class="doc-poster">
-            <div class="doc-icons">
-                <i class="fa-solid fa-share"></i>
-                <i class="fa-solid fa-eye"></i>
-                <i class="fa-solid fa-heart"></i>
-            </div>
-            <img src="/assets/img/team6.jpg" alt="">
-            <div class="doc-details">
-                <h2>Mr Joe</h2>
-
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-brands fa-instagram"></i>
-            </div>
-        </div>
-    </div>
+      {{/each}}
+    {{else}}
+      <p class="message-error">{{message}}</p>
+    {{/if}}
+  </div>
 </div>

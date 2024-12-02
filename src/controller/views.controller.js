@@ -1,3 +1,5 @@
+const doctorModel = require("../models/doctor.model");
+
 class ViewsController {
   renderHome = (req, res) => {
     try {
@@ -23,10 +25,18 @@ class ViewsController {
     }
   };
 
-  renderDoctors = (req, res) => {
+  renderDoctors = async (req, res) => {
     try {
-      res.render("doctors");
+      const doctors = await doctorModel.find({ isApproved: "approved" }).lean();
+      if (!doctors || doctors.length === 0) {
+        return res.render("doctors", {
+          doctors: null,
+          message: "Doctores no encontrados",
+        });
+      }
+      res.render("doctors", { doctors });
     } catch (err) {
+      console.error("Error al renderizar doctores:", err);
       res.render("404");
     }
   };
@@ -86,15 +96,21 @@ class ViewsController {
       res.render("404");
     }
   };
- 
-  renderDoctorDetail = (req, res) => {
+
+  renderDoctorDetail = async (req, res) => {
+    const { id } = req.params;
     try {
-      res.render("doctorDetail");
+      const doctor = await doctorModel.findById(id).lean();
+      if (!doctor) {
+        return res.render("404", { message: "Doctor no encontrado" });
+      }
+      res.render("doctorDetail", { doctor });
     } catch (err) {
-      res.render("404");
+      console.error(err);
+      res.render("404", { message: "Error al obtener los datos del doctor" });
     }
   };
-  
+
   renderDoctorProfile = (req, res) => {
     try {
       res.render("doctorProfile");
@@ -102,7 +118,7 @@ class ViewsController {
       res.render("404");
     }
   };
-  
+
   renderUserProfile = (req, res) => {
     try {
       res.render("userProfile");
@@ -110,7 +126,7 @@ class ViewsController {
       res.render("404");
     }
   };
-  
+
   renderAdminProfile = (req, res) => {
     try {
       res.render("adminProfile");
@@ -118,10 +134,18 @@ class ViewsController {
       res.render("404");
     }
   };
-  
+
   renderMeeting = (req, res) => {
     try {
       res.render("meeting");
+    } catch (err) {
+      res.render("404");
+    }
+  };
+
+  renderTicket = (req, res) => {
+    try {
+      res.render("ticket");
     } catch (err) {
       res.render("404");
     }

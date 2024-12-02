@@ -16,7 +16,22 @@ class AuthController {
   };
 
   register = async (req, res) => {
-    const { email, password, name, role, photo, gender } = req.body;
+    const {
+      email,
+      password,
+      name,
+      role,
+      photo,
+      gender,
+      phone,
+      ticket_price,
+      bio,
+      about,
+      specialization,
+      education,
+      experiences,
+      timeSlots,
+    } = req.body;
     try {
       let user = null;
       if (role === "paciente") {
@@ -48,6 +63,14 @@ class AuthController {
           photo,
           gender,
           role,
+          phone,
+          ticket_price,
+          bio,
+          about,
+          specialization,
+          education,
+          experiences,
+          timeSlots,
         });
       }
       await user.save();
