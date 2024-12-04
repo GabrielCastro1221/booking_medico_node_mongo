@@ -1,1 +1,35 @@
-<h1 class="mt-10">User Profile</h1>
+<link rel="stylesheet" href="/css/userProfile/userProfile.css">
+
+<section class="section-main">
+    <div class="tabs-btns">
+        <button class="group-1" data-target="profile">Mi Perfil</button>
+        <button class="group-1" data-target="citas">Mis Citas Medicas</button>
+        <button class="group-1" data-target="editar">Editar Perfil</button>
+        <div class="btn-group">
+            <button class="group-2" data-target="cerrar">Cerrar sesión</button>
+            <button class="group-2" data-target="eliminar">Eliminar Cuenta</button>
+        </div>
+    </div>
+
+    <div class="profile-content" id="profile">
+        {{> userProfile}}
+    </div>
+
+    <div class="profile-content" id="citas">
+        {{> userAppointments}}
+    </div>
+
+    <div class="profile-content" id="editar">
+        {{> userEditProfile}}
+    </div>
+
+    <div class="profile-content" id="cerrar">
+        Cerrar sesión
+    </div>
+
+    <div class="profile-content" id="eliminar">
+        Eliminar cuenta
+    </div>
+</section>
+
+<script src="/js/userProfile/userProfile.js"></script>

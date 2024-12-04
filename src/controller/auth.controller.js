@@ -74,12 +74,9 @@ class AuthController {
         });
       }
       await user.save();
-      res.status(200).json({
-        message: "Registro exitoso!",
-        user,
-      });
+      return res.redirect("/");
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         error: error.message,
         message: "Error al registrar usuario",
       });
@@ -116,8 +113,7 @@ class AuthController {
         success: true,
         message: "Inicio de sesion exitoso!",
         token,
-        data: { ...rest },
-        role,
+        data: { ...rest, role },
       });
     } catch (error) {
       res.status(500).json({
