@@ -124,3 +124,96 @@ const renderBookings = (bookings) => {
 
   bookingsContainer.appendChild(list);
 };
+
+const datos = [
+  { icono: "fa-solid fa-envelope", texto: "Email", valor: "" },
+  { icono: "fas fa-phone-alt", texto: "Teléfono", valor: "" },
+  { icono: "fa-solid fa-venus-mars", texto: "Género", valor: "" },
+  { icono: "fa-solid fa-address-book", texto: "Rol", valor: "" },
+  { icono: "fa-solid fa-droplet", texto: "Sangre", valor: "" }
+];
+
+const botones = [
+  { clase: "group-1", dataTarget: "profile", texto: "Mi Perfil" },
+  { clase: "group-1", dataTarget: "citas", texto: "Mis Citas Médicas" },
+  { clase: "group-1", dataTarget: "editar", texto: "Editar Perfil" }
+];
+
+const perfilBio = {
+  titulo: "Biografía del Usuario",
+  texto: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+};
+
+const avatarData = {
+  imagenUrl: "https://vineview.com/wp-content/uploads/2017/07/avatar-no-photo-300x300.png",
+  botonTexto: "Cambiar Avatar",
+  botonIcono: "far fa-image"
+};
+
+const lista = document.querySelector(".lista-datos");
+
+datos.forEach(dato => {
+    const li = document.createElement("li");
+    const icono = document.createElement("i");
+    icono.className = `${dato.icono} icono`;
+    const texto = document.createTextNode(` ${dato.texto}: `);
+    const span = document.createElement("span");
+    span.textContent = dato.valor;
+    li.appendChild(icono);
+    li.appendChild(texto);
+    li.appendChild(span);
+    lista.appendChild(li);
+});
+
+// Seleccionamos el contenedor donde se agregarán los botones
+const contenedorBotones = document.querySelector(".tabs-btns");
+
+// Generamos los botones dinámicamente
+botones.forEach(boton => {
+    const button = document.createElement("button");
+    button.className = boton.clase; // Asignamos la clase
+    button.setAttribute("data-target", boton.dataTarget); // Asignamos el atributo data-target
+    button.textContent = boton.texto; // Asignamos el texto del botón
+    contenedorBotones.appendChild(button); // Agregamos el botón al contenedor
+});
+
+// Seleccionamos el contenedor donde se generará la biografía
+const perfilUsuarioBio = document.querySelector(".perfil-usuario-bio");
+
+// Generamos dinámicamente el título y el texto
+const titulo = document.createElement("h3");
+titulo.className = "titulo";
+titulo.textContent = perfilBio.titulo; // Asignamos el texto del título
+
+const texto = document.createElement("p");
+texto.className = "texto";
+texto.textContent = perfilBio.texto; // Asignamos el texto de la biografía
+
+// Agregamos los elementos al contenedor
+perfilUsuarioBio.appendChild(titulo);
+perfilUsuarioBio.appendChild(texto);
+
+// Seleccionamos el contenedor donde se generará el avatar
+const avatarContainer = document.querySelector(".perfil-usuario-avatar");
+
+// Crear la imagen
+const imagen = document.createElement("img");
+imagen.src = avatarData.imagenUrl; // Asignamos la URL de la imagen
+imagen.alt = "img-avatar"; // Texto alternativo
+
+// Crear el botón
+const boton = document.createElement("button");
+boton.type = "button";
+boton.className = "boton-avatar"; // Asignamos clase al botón
+
+// Crear el icono dentro del botón
+const icono = document.createElement("i");
+icono.className = avatarData.botonIcono; // Asignamos la clase del icono
+
+// Añadir el icono y texto al botón
+boton.appendChild(icono);
+boton.appendChild(document.createTextNode(` ${avatarData.botonTexto}`)); // Texto del botón
+
+// Añadir la imagen y el botón al contenedor
+avatarContainer.appendChild(imagen);
+avatarContainer.appendChild(boton);

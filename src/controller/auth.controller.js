@@ -21,7 +21,6 @@ class AuthController {
       password,
       name,
       role,
-      photo,
       gender,
       phone,
       ticket_price,
@@ -32,6 +31,7 @@ class AuthController {
       experiences,
       timeSlots,
     } = req.body;
+    const photo = req.file ? req.file.path : null;
     try {
       let user = null;
       if (role === "paciente") {
@@ -74,7 +74,9 @@ class AuthController {
         });
       }
       await user.save();
-      return res.redirect("/");
+      return res
+        .status(200)
+        .json({ status: true, message: "Registro Exitoso", user: user });
     } catch (error) {
       return res.status(500).json({
         error: error.message,

@@ -46,25 +46,30 @@ class UserController {
   updateUser = async (req, res) => {
     const { id } = req.params;
     try {
-      const updateUser = await userModel.findByIdAndUpdate(
+      let photoUrl = req.body.photo;
+      if (req.file) {
+        photoUrl = req.file.path;
+      }
+      const updatedUser = await userModel.findByIdAndUpdate(
         id,
-        { $set: req.body },
+        { $set: { ...req.body, photo: photoUrl } },
         { new: true }
       );
-      if (!updateUser) {
-        res
+      if (!updatedUser) {
+        return res
           .status(404)
           .json({ status: false, message: "Usuario no encontrado" });
       }
       res.status(200).json({
         status: true,
-        message: "Usuario actualizado con exito",
-        usuario: updateUser,
+        message: "Usuario actualizado con éxito",
+        usuario: updatedUser,
       });
     } catch (err) {
+      console.error(err);
       res
         .status(500)
-        .json({ status: false, message: "error al actualizar los usuario" });
+        .json({ status: false, message: "Error al actualizar el usuario" });
     }
   };
 

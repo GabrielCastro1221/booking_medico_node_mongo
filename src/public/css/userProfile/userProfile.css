@@ -86,7 +86,7 @@
     height: 150px;
     align-items: center;
     justify-content: center;
-    border: 5px solid var(--maincolor);
+    border: 5px solid var(--btncolor);
     background-color: white;
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
@@ -122,8 +122,9 @@
     display: block;
     width: 100%;
     font-size: 2.7rem;
-    color: var(--maincolor);
+    color: var(--btncolor);
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .seccion-perfil-usuario .perfil-usuario-body .texto {
@@ -146,39 +147,29 @@
     font-size: 1.3rem;
 }
 
-.seccion-perfil-usuario .lista-datos {
-    width: 100%;
-    list-style: none;
+.lista-datos {
+    list-style: none; 
     padding: 0;
+    margin: 0;
 }
 
-.seccion-perfil-usuario .lista-datos li {
+.lista-datos li {
     display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
-    gap: 25px;
-    font-weight: 600;
-    font-size: 1.4rem;
-    color: var(--maincolor);
+    align-items: center; 
+    margin-bottom: 10px; 
+    font-size: 16px;
 }
 
-.seccion-perfil-usuario .lista-datos li:last-child {
-    border-bottom: none;
+.lista-datos i.icono {
+    margin-right: 10px; 
+    color: var(--btncolor); 
+    font-size: 18px;
 }
 
-.seccion-perfil-usuario .lista-datos li .icono {
-    margin-right: 20px;
-    font-size: 1.8rem;
-    color: var(--maincolor);
-}
-
-.seccion-perfil-usuario .lista-datos li span {
-    text-align: center;
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: var(--textcolor);
+.lista-datos span {
+    font-weight: bold; 
+    margin-left: 5px;
+    color: var(--btncolor);
 }
 
 .lista-citas {
@@ -200,7 +191,6 @@
     display: flex;
     flex-direction: column;
     width: calc(50% - 20px);
-    /* Ajuste para dos columnas */
 }
 
 .cita-item:hover {

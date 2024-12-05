@@ -6,6 +6,7 @@ const meetingRouter = require("../routes/meeting.routes");
 const chatRouter = require("../routes/message.routes");
 const bookingRouter = require("../routes/booking.routes");
 const ticketRouter = require("../routes/tickets.routes");
+const uploadRouter = require("../routes/upload.routes");
 
 const setupRoutes = (app) => {
   app.use("/", viewsRouter);
@@ -16,6 +17,7 @@ const setupRoutes = (app) => {
   app.use("/api/v1/message", chatRouter);
   app.use("/api/v1/bookings", bookingRouter);
   app.use("/api/v1/tickets", ticketRouter);
+  app.use("/api/v1", uploadRouter);
 };
 
 module.exports = setupRoutes;

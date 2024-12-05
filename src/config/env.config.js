@@ -27,6 +27,12 @@ const configObject = {
     email_from: process.env.EMAIL_FROM,
     email_service: process.env.EMAIL_SERVICE,
   },
+  cloudinary: {
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET,
+    cloud_name: process.env.CLOUD_NAME,
+    cloudinary_url: process.env.CLOUDINARY_URL,
+  },
 };
 
 module.exports = configObject;
