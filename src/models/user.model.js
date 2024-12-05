@@ -1,15 +1,56 @@
 const { Schema, model } = require("mongoose");
 
-const schema = new Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  name: { type: String, required: true },
-  phone: { type: String },
-  photo: { type: String },
-  gender: { type: String, enum: ["masculino", "femenino", "otro"] },
-  role: { type: String, enum: ["paciente", "admin"], default: "paciente" },
-  blood_type: { type: String },
-  booking: [{ type: Schema.Types.ObjectId, ref: "bookings"}],
-});
+const userSchema = new Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    phone: {
+      type: String,
+      trim: true,
+    },
+    photo: {
+      type: String,
+      default: null,
+    },
+    gender: {
+      type: String,
+      enum: ["masculino", "femenino", "otro"],
+      default: "otro",
+    },
+    role: {
+      type: String,
+      enum: ["paciente", "admin"],
+      default: "paciente",
+    },
+    blood_type: {
+      type: String,
+      trim: true,
+    },
+    booking: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "bookings",
+      },
+    ],
+  },
+  {
+    timestamps: true,
+    versionKey: false,
+  }
+);
 
-module.exports = model("users", schema);
+module.exports = model("User", userSchema);

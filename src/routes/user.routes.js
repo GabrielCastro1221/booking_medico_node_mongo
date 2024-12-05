@@ -43,12 +43,7 @@ router.get(
   user.getUserProfile
 );
 
-router.get(
-  "/appoinment/my-appoinment",
-  auth.authenticate,
-  auth.restrict(["paciente", "admin"]),
-  user.getMyAppoinments
-);
+router.get("/appoinment/my-appoinment", user.getMyAppoinments);
 
 router.put(
   "/cancelled/:id",

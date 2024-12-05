@@ -148,7 +148,13 @@ class UserController {
   getUserProfile = async (req, res) => {
     const userId = req.userId;
     try {
-      const user = await userModel.findById(userId);
+      const user = await userModel.findById(userId).populate({
+        path: "booking",
+        populate: {
+          path: "doctor",
+          select: "name",
+        },
+      });
       if (!user) {
         return res.status(404).json({
           success: false,
@@ -159,7 +165,7 @@ class UserController {
       res.status(200).json({
         success: true,
         message: "Informacion del perfil obtenida exitosamente",
-        data: { ...rest },
+        data: { ...rest, bookings: user.booking },
       });
     } catch (error) {
       res.status(500).json({
