@@ -130,90 +130,147 @@ const datos = [
   { icono: "fas fa-phone-alt", texto: "Teléfono", valor: "" },
   { icono: "fa-solid fa-venus-mars", texto: "Género", valor: "" },
   { icono: "fa-solid fa-address-book", texto: "Rol", valor: "" },
-  { icono: "fa-solid fa-droplet", texto: "Sangre", valor: "" }
+  { icono: "fa-solid fa-droplet", texto: "Sangre", valor: "" },
 ];
 
 const botones = [
   { clase: "group-1", dataTarget: "profile", texto: "Mi Perfil" },
-  { clase: "group-1", dataTarget: "citas", texto: "Mis Citas Médicas" },
-  { clase: "group-1", dataTarget: "editar", texto: "Editar Perfil" }
+  { clase: "group-1", dataTarget: "citas", texto: "Citas Médicas" },
+  { clase: "group-1", dataTarget: "editar", texto: "Editar Perfil" },
 ];
 
 const perfilBio = {
   titulo: "Biografía del Usuario",
-  texto: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  texto:
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 };
 
 const avatarData = {
-  imagenUrl: "https://vineview.com/wp-content/uploads/2017/07/avatar-no-photo-300x300.png",
+  imagenUrl:
+    "https://vineview.com/wp-content/uploads/2017/07/avatar-no-photo-300x300.png",
   botonTexto: "Cambiar Avatar",
-  botonIcono: "far fa-image"
+  botonIcono: "far fa-image",
 };
 
 const lista = document.querySelector(".lista-datos");
 
-datos.forEach(dato => {
-    const li = document.createElement("li");
-    const icono = document.createElement("i");
-    icono.className = `${dato.icono} icono`;
-    const texto = document.createTextNode(` ${dato.texto}: `);
-    const span = document.createElement("span");
-    span.textContent = dato.valor;
-    li.appendChild(icono);
-    li.appendChild(texto);
-    li.appendChild(span);
-    lista.appendChild(li);
+datos.forEach((dato) => {
+  const li = document.createElement("li");
+  const icono = document.createElement("i");
+  icono.className = `${dato.icono} icono`;
+  const texto = document.createTextNode(` ${dato.texto}: `);
+  const span = document.createElement("span");
+  span.textContent = dato.valor;
+  li.appendChild(icono);
+  li.appendChild(texto);
+  li.appendChild(span);
+  lista.appendChild(li);
 });
 
-// Seleccionamos el contenedor donde se agregarán los botones
 const contenedorBotones = document.querySelector(".tabs-btns");
 
-// Generamos los botones dinámicamente
-botones.forEach(boton => {
-    const button = document.createElement("button");
-    button.className = boton.clase; // Asignamos la clase
-    button.setAttribute("data-target", boton.dataTarget); // Asignamos el atributo data-target
-    button.textContent = boton.texto; // Asignamos el texto del botón
-    contenedorBotones.appendChild(button); // Agregamos el botón al contenedor
+botones.forEach((boton) => {
+  const button = document.createElement("button");
+  button.className = boton.clase;
+  button.setAttribute("data-target", boton.dataTarget);
+  button.textContent = boton.texto;
+  contenedorBotones.appendChild(button);
 });
 
-// Seleccionamos el contenedor donde se generará la biografía
 const perfilUsuarioBio = document.querySelector(".perfil-usuario-bio");
-
-// Generamos dinámicamente el título y el texto
 const titulo = document.createElement("h3");
 titulo.className = "titulo";
-titulo.textContent = perfilBio.titulo; // Asignamos el texto del título
+titulo.textContent = perfilBio.titulo;
 
 const texto = document.createElement("p");
 texto.className = "texto";
-texto.textContent = perfilBio.texto; // Asignamos el texto de la biografía
+texto.textContent = perfilBio.texto;
 
-// Agregamos los elementos al contenedor
 perfilUsuarioBio.appendChild(titulo);
 perfilUsuarioBio.appendChild(texto);
 
-// Seleccionamos el contenedor donde se generará el avatar
 const avatarContainer = document.querySelector(".perfil-usuario-avatar");
 
-// Crear la imagen
 const imagen = document.createElement("img");
-imagen.src = avatarData.imagenUrl; // Asignamos la URL de la imagen
-imagen.alt = "img-avatar"; // Texto alternativo
+imagen.src = avatarData.imagenUrl;
+imagen.alt = "img-avatar";
 
-// Crear el botón
 const boton = document.createElement("button");
 boton.type = "button";
-boton.className = "boton-avatar"; // Asignamos clase al botón
+boton.className = "boton-avatar";
 
-// Crear el icono dentro del botón
 const icono = document.createElement("i");
-icono.className = avatarData.botonIcono; // Asignamos la clase del icono
+icono.className = avatarData.botonIcono;
 
-// Añadir el icono y texto al botón
 boton.appendChild(icono);
-boton.appendChild(document.createTextNode(` ${avatarData.botonTexto}`)); // Texto del botón
+boton.appendChild(document.createTextNode(` ${avatarData.botonTexto}`));
 
-// Añadir la imagen y el botón al contenedor
 avatarContainer.appendChild(imagen);
 avatarContainer.appendChild(boton);
+
+const logoutButton = document.querySelector(".logout-button");
+logoutButton.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.href = "/";
+});
+
+const deleteButton = document.querySelector(".delete-button");
+
+deleteButton.addEventListener("click", async () => {
+  const userData = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
+  if (!userData || !userData._id) {
+    alert("No se encontró el ID del usuario.");
+    return;
+  }
+  if (!token) {
+    alert("No se proporcionó el token.");
+    return;
+  }
+  const id = userData._id;
+  try {
+    const response = await fetch(`/api/v1/users/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`, 
+      },
+    });
+    const result = await response.json();
+    if (response.ok) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      Toastify({
+        text: result.message,
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+      }).showToast();
+
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1500);
+    } else {
+      Toastify({
+        text: `Error: ${result.message}`,
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+      }).showToast();
+    }
+  } catch (error) {
+    console.error("Error al eliminar el usuario:", error);
+    Toastify({
+      text: "Hubo un error al eliminar la cuenta.",
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+    }).showToast();
+  }
+});

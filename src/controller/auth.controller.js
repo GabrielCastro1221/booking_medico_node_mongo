@@ -2,7 +2,12 @@ const bcript = require("bcrypt");
 const userModel = require("../models/user.model");
 const doctorModel = require("../models/doctor.model");
 const jwt = require("jsonwebtoken");
+const { generarResetToken } = require("../utils/resetToken");
+const MailerController = require("../services/mailer");
 const configObject = require("../config/env.config");
+const { createHash, isValidPassword } = require("../utils/hash");
+
+const mailer = new MailerController();
 
 class AuthController {
   generateToken = (user) => {
@@ -74,6 +79,7 @@ class AuthController {
         });
       }
       await user.save();
+      
       return res
         .status(200)
         .json({ status: true, message: "Registro Exitoso", user: user });
@@ -121,6 +127,69 @@ class AuthController {
       res.status(500).json({
         error: error.message,
         message: "Error al iniciar sesion",
+      });
+    }
+  };
+
+  RequestPasswordReset = async (req, res) => {
+    const { email } = req.body;
+    try {
+      let user = await userModel.findOne({ email });
+      if (!user) {
+        user = await doctorModel.findOne({ email });
+      }
+      if (!user) {
+        return res.render("passwordChange", { error: "Usuario no encontrado" });
+      }
+      const token = generarResetToken();
+      user.token_reset = {
+        token: token,
+        expire: new Date(Date.now() + 3600000),
+      };
+      await user.save();
+      await mailer.enviarCorreoRestablecimiento(email, token);
+      res.redirect("/confirm");
+    } catch (err) {
+      res.status(500).json({
+        status: false,
+        message: "error interno del servidor",
+        error: err.message,
+      });
+    }
+  };
+
+  resetPassword = async (req, res) => {
+    const { email, password, token } = req.body;
+    try {
+      let user = await userModel.findOne({ email });
+      if (!user) {
+        user = await doctorModel.findOne({ email });
+      }
+      if (!user) {
+        return res.render("resetPass", { error: "Usuario no encontrado" });
+      }
+      const resetToken = user.token_reset;
+      if (!resetToken || resetToken.token !== token) {
+        return res.render("resetPass", { error: "Token invalido" });
+      }
+      const ahora = new Date();
+      if (ahora > resetToken.expire) {
+        return res.render("resetPass", { error: "El token expiro" });
+      }
+      if (isValidPassword(password, user)) {
+        return res.render("resetPass", {
+          error: "La nueva contraseña no puede ser igual a a la anterior",
+        });
+      }
+      user.password = createHash(password);
+      user.token_reset = undefined;
+      await user.save();
+      return res.redirect("/");
+    } catch (err) {
+      res.status(500).json({
+        status: false,
+        message: "error interno del servidor",
+        error: err.message,
       });
     }
   };

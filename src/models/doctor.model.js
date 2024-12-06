@@ -20,6 +20,7 @@ const schema = new Schema({
     default: "pending",
   },
   booking: [{ type: Schema.Types.ObjectId, ref: "bookings" }],
+  token_reset: { token: String, expire: Date },
 });
 
 module.exports = model("doctors", schema);

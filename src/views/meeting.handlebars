@@ -1,1 +1,16 @@
-<h1 class="mt-10">meeting</h1>
+<link rel="stylesheet" href="/css/meeting/meeting.css">
+
+<div class="body-meeting">
+    <div class="container">
+        <div class="video-container">
+            <video id="remoteVideo" autoplay></video>
+            <video id="localVideo" class="local-video" autoplay></video>
+        </div>
+        <div class="chat-container">
+            {{> chat}}
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.agora.io/sdk/release/AgoraRTC_N.js"></script>
+<script src="/js/meeting/meeting.js"></script>

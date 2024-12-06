@@ -46,6 +46,7 @@ const userSchema = new Schema(
         ref: "bookings",
       },
     ],
+    token_reset: { token: String, expire: Date },
   },
   {
     timestamps: true,
