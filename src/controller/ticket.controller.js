@@ -32,9 +32,8 @@ class TicketController {
           .status(404)
           .json({ status: false, message: "Tickets no encontrados" });
       }
-      res
-        .status(201)
-        .json({ status: true, message: "Ticket encontrado", ticket: ticket });
+      res.render("ticket", { ticket });
+
     } catch (err) {
       res.status(500).json({
         status: false,

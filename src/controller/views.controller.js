@@ -1,4 +1,5 @@
 const doctorModel = require("../models/doctor.model");
+const ticketModel = require("../models/ticket.model");
 
 class ViewsController {
   renderHome = (req, res) => {
@@ -36,7 +37,6 @@ class ViewsController {
       }
       res.render("doctors", { doctors });
     } catch (err) {
-      console.error("Error al renderizar doctores:", err);
       res.render("404");
     }
   };
@@ -106,7 +106,6 @@ class ViewsController {
       }
       res.render("doctorDetail", { doctor });
     } catch (err) {
-      console.error(err);
       res.render("404", { message: "Error al obtener los datos del doctor" });
     }
   };
@@ -143,11 +142,16 @@ class ViewsController {
     }
   };
 
-  renderTicket = (req, res) => {
+  renderTicket = async (req, res) => {
+    const { id } = req.params;
     try {
-      res.render("ticket");
+      const ticket = await ticketModel.findById(id).lean();
+      if (!ticket) {
+        return res.render("404", { message: "ticket no encontrado" });
+      }
+      res.render("ticket", { ticket });
     } catch (err) {
-      res.render("404");
+      res.render("404", { message: "Error al obtener los datos del doctor" });
     }
   };
 }

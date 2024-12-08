@@ -83,23 +83,19 @@
     border-bottom: 2px solid var(--maincolor);
 }
 
-.tab-content {
-    margin-top: 50px;
-}
-
-.side-panel {
-    grid-column: span 1;
-}
-
 .info-container {
     padding: 20px;
+}
+
+.in {
+    margin-top: 100px;
 }
 
 .info-section,
 .education-section,
 .experience-section {
     margin-top: 20px;
-    
+
 }
 
 .info-title {
@@ -297,6 +293,119 @@
     color: var(--textcolor);
 }
 
+.tabs-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.tabs-btns .group-1,
+.tabs-btns .group-2 {
+    padding: 12px;
+    background-color: var(--btncolor);
+    color: white;
+    font-size: 1.2rem;
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+
+.btn-out {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -90px;
+}
+
+.btn-out button {
+    padding: 8px;
+    background-color: var(--btncolor);
+    color: white;
+    width: 30%;
+    border-radius: 5px;
+}
+
+.btn-out button:hover {
+    background-color: var(--thirdcolor);
+    color: var(--textcolor);
+}
+
+.tabs-btns .group-2 {
+    background-color: var(--btncolor);
+}
+
+.tabs-btns .group-2:hover {
+    background-color: var(--thirdcolor);
+    color: var(--textcolor);
+}
+
+.group-2 {
+    margin-top: 10px;
+}
+
+.tabs-btns .group-1:hover {
+    background-color: var(--secondcolor);
+    color: var(--textcolor);
+}
+
+.btn-group {
+    margin-top: 50px;
+    width: 100%;
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.card {
+    background-image: url(/assets/img/backgroung-pattern-1.png);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 1.7rem;
+    color: var(--btncolor);
+}
+
+.card p {
+    color: var(--textcolor);
+    margin: 10px 0;
+    font-size: 1.3rem;
+}
+
+.card p strong {
+    color: var(--btncolor);
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.video_link {
+    padding: 8px;
+    background-color: var(--btncolor);
+    color: white;
+    border-radius: 5px;
+}
+
+.video_link:hover {
+    background-color: var(--secondcolor);
+    color: var(--textcolor);
+}
+
 @media (max-width: 768px) {
     .grid {
         grid-template-columns: 1fr;
@@ -325,14 +434,6 @@
 
     .tab {
         font-size: 14px;
-    }
-
-    .side-panel {
-        display: flex;
-        justify-content: center;
-        justify-content: center;
-        max-width: 100%;
-        margin-top: 20px;
     }
 
     .profile-info {

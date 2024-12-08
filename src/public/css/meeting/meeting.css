@@ -1,19 +1,10 @@
-.body-meeting {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    margin-top: 80px;
-}
-
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1500px;
     border: 1px solid var(--btncolor);
     border-radius: 10px;
     overflow: hidden;
@@ -24,7 +15,7 @@
     position: relative;
     height: 300px;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
     border-right: 3px solid var(--btncolor);
     display: flex;
     justify-content: center;

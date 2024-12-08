@@ -7,7 +7,7 @@ const router = Router();
 const auth = new AuthMiddleware();
 const user = new UserController();
 
-router.get("/", auth.authenticate, auth.restrict(["admin"]), user.getAllUsers);
+router.get("/", auth.authenticate, user.getAllUsers);
 
 router.get(
   "/:id",
@@ -18,7 +18,7 @@ router.get(
 
 router.put(
   "/:id",
-  upload.single('photo'),
+  upload.single("photo"),
   auth.authenticate,
   auth.restrict(["paciente", "admin"]),
   user.updateUser
@@ -54,11 +54,6 @@ router.put(
   user.cancelledAppointment
 );
 
-router.put(
-  "/admin/:id",
-  auth.authenticate,
-  auth.restrict(["admin"]),
-  user.changeRolAdmin
-);
+router.put("/admin/:id", user.changeRolAdmin);
 
 module.exports = router;

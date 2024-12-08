@@ -44,9 +44,13 @@ class DoctorController {
   updateDoctor = async (req, res) => {
     const { id } = req.params;
     try {
+      let photoUrl = req.body.photo;
+      if (req.file) {
+        photoUrl = req.file.path;
+      }
       const updateDoctor = await doctorModel.findByIdAndUpdate(
         id,
-        { $set: req.body },
+        { $set: { ...req.body, photo: photoUrl } },
         { new: true }
       );
       if (!updateDoctor) {

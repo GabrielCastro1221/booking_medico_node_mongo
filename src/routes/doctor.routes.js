@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const DoctorController = require("../controller/doctor.controller");
 const AuthMiddleware = require("../middlewares/verifyToken.middleware");
+const upload = require("../middlewares/upload.middleware");
 
 const router = Router();
 const auth = new AuthMiddleware();
@@ -11,6 +12,7 @@ router.get("/:id", doctor.getDoctorsById);
 
 router.put(
   "/:id",
+  upload.single('photo'),
   auth.authenticate,
   auth.restrict(["doctor"]),
   doctor.updateDoctor
