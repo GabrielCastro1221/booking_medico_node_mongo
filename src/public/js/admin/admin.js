@@ -24,3 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+const logoutButton = document.querySelector(".logout-button");
+logoutButton.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.href = "/";
+});

@@ -31,12 +31,7 @@ router.delete(
   user.deleteUser
 );
 
-router.post(
-  "/create-appointment",
-  auth.authenticate,
-  auth.restrict(["paciente", "admin"]),
-  user.createAppointment
-);
+router.post("/create-appointment", user.createAppointment);
 
 router.get(
   "/profile/me",

@@ -173,6 +173,7 @@ class UserController {
         data: { ...rest, bookings: user.booking },
       });
     } catch (error) {
+      
       res.status(500).json({
         error: error.message,
         message: "Error al obtener la informacion del perfil",
