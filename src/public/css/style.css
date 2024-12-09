@@ -60,3 +60,7 @@ html {
 .mb-8 {
     margin-bottom: 80px;
 }
+
+ul,li {
+    list-style: none;
+}

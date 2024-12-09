@@ -18,12 +18,7 @@ router.put(
   doctor.updateDoctor
 );
 
-router.delete(
-  "/:id",
-  auth.authenticate,
-  auth.restrict(["doctor"]),
-  doctor.deleteDoctor
-);
+router.delete("/:id", doctor.deleteDoctor);
 
 router.put(
   "/approved/:id",
@@ -46,18 +41,7 @@ router.get(
   doctor.getDoctorAppointments
 );
 
-router.put(
-  "/:id/approval-status",
-  auth.authenticate,
-  auth.restrict(["admin"]),
-  doctor.changeApprovalStatus
-);
-
-router.put(
-  "/:id/cancelled-status",
-  auth.authenticate,
-  auth.restrict(["admin"]),
-  doctor.cancelledStatus
-);
+router.put("/:id/approval-status", doctor.changeApprovalStatus);
+router.put("/:id/cancelled-status",  doctor.cancelledStatus);
 
 module.exports = router;
