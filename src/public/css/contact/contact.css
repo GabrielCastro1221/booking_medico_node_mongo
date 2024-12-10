@@ -22,7 +22,7 @@
     font-size: 35px;
     font-weight: 600;
     line-height: 1;
-    color: var(--maincolor);
+    color: var(--btncolor);
 }
 
 .text {
@@ -67,7 +67,7 @@
 
 .inputBox:not(error) input:focus,
 .inputBox:not(error) textarea:focus {
-    border-bottom: 1px solid var(--maincolor);
+    border-bottom: 1px solid var(--btncolor);
 }
 
 .inputBox textarea {
@@ -88,7 +88,7 @@
     font-weight: 500;
     border: none;
     color: white;
-    background-color: var(--maincolor);
+    background-color: var(--btncolor);
     border-radius: 5px;
     cursor: pointer;
     transition: 0.5s;
@@ -136,8 +136,8 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: var(--maincolor);
-    border: 1px solid var(--maincolor);
+    color: var(--btncolor);
+    border: 1px solid var(--btncolor);
 }
 
 .infoBox .text {
@@ -162,7 +162,7 @@
     align-items: center;
     border-bottom-right-radius: 30px;
     color: white;
-    background-color: var(--maincolor);
+    background-color: var(--btncolor);
 }
 
 .social-icons a {

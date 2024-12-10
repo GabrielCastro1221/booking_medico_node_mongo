@@ -5,21 +5,21 @@ document.addEventListener("DOMContentLoaded", () => {
       content: [
         {
           icon: "fi fi-tr-hands-heart",
-          title: "Quality & Safety",
+          title: "Encontrar Doctor",
           description:
-            "Our Delmont hospital utilizes state of the art technology and employs a team of true experts.",
+            "Te ayudamos a encontrar al médico que necesitas de manera rápida y sencilla. No importa dónde te encuentres, nuestra herramienta de búsqueda te conecta con los mejores profesionales la salud.",
         },
         {
           icon: "fi fi-rr-doctor",
-          title: "Quality & Safety",
+          title: "Nuestra ubicación",
           description:
-            "Our Delmont hospital utilizes state of the art technology and employs a team of true experts.",
+            "Cada especialista tiene su propia clínica o consultorio en diferentes partes de la ciudad y sus alrededores. Nuestra plataforma te permite encontrar al profesional adecuado cerca de    ti.",
         },
         {
           icon: "fi fi-tr-user-md",
-          title: "Quality & Safety",
+          title: "Agendar una cita",
           description:
-            "Our Delmont hospital utilizes state of the art technology and employs a team of true experts.",
+            "Citas Presenciales: Elige la fecha de tu cita y visita a tu doctor en su               consultorio. citas Online: Si prefieres una consulta desde la comodidad de tu hogar, también  puedes agendar citas virtuales.",
         },
       ],
       render: (item) => {
@@ -48,16 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "main-about",
       content: {
-        heading: "About Us",
-        imageSrc: "/assets/img/about1.png",
+        heading: "Acerca de Health Point Manizales",
+        imageSrc: "/assets/img/about3.jpg",
         imageAlt: "About Image",
         title:
-          "We're setting Standards in Research <br> what's more, Clinical Care.",
+          "Brindamos un servicio integral a nuestros pacientes.",
         description1:
-          "We provide the most full medical services, so every person could have the opportunity to receive qualitative medical help.",
+          "Ofrecemos los servicios médicos más completos para que todas las personas tengan la oportunidad de recibir atención médica de calidad.",
         description2:
-          "Our Clinic has grown to provide a world class facility for the treatment of tooth loss, dental cosmetics and more advanced restorative dentistry. We are among the most qualified implant providers in the AUS with over 30 years of quality training and experience.",
-        buttonText: "Read More",
+          "En Health Point Manizales, nos enorgullece ofrecer una plataforma integral para agendar citas médicas tanto online como presenciales. Nuestra plataforma ofrece servicio de clase mundial, permitiendo a los pacientes reservar citas con doctores especializados en diversas áreas de la medicina.",
+  
       },
       render: (content) => {
         const aboutHeading = document.createElement("div");
@@ -93,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
         p2.textContent = content.description2;
 
         const button = document.createElement("button");
-        button.className = "aboutbtn";
         button.textContent = content.buttonText;
 
         aboutRightContent.appendChild(h2);
@@ -115,15 +114,15 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "main-home",
       content: {
-        welcomeText: "welcome to hospital management",
-        title: "We take care our<br> Patients Healths",
+        welcomeText: "Bienvenidos a Health Point Manizales.",
+        title: "Comprometidos con el bienestar integral de nuestros pacientes.",
         description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus numquam veniam porro eius, fugiat vero ut ipsum libero",
+          "Otorgamos atención medica de calidad fomentando el humanismo,innovación y excelencia logrando la seguridad del paciente, su satisfacción y confianza. Prevenimos y fomentamos estándares en salud.",
         buttons: [
-          { href: "", text: "Información" },
+          { href: "/servicios", text: "Información" },
           { href: "/doctores", text: "Doctores", class: "homebtnsec" },
         ],
-        imageSrc: "/assets/img/hero2.png",
+        imageSrc: "/assets/img/her1.png",
         imageAlt: "Hero Image",
       },
       render: (content) => {

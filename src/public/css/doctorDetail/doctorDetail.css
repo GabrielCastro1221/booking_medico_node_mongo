@@ -29,7 +29,7 @@
     width: 100%;
     height: 300px;
     object-fit: cover;
-    border: 0.7rem solid var(--maincolor);
+    border: 0.7rem solid var(--btncolor);
 }
 
 .profile-info {
@@ -39,8 +39,8 @@
 
 .specialization {
     background-color: #CCF0F3;
-    border: 1px solid var(--maincolor);
-    color: var(--maincolor);
+    border: 1px solid var(--btncolor);
+    color: var(--btncolor);
     margin-bottom: 20px;
     width: 29%;
     padding: 10px;
@@ -50,7 +50,7 @@
 }
 
 .doctor-name {
-    color: var(--maincolor);
+    color: var(--btncolor);
     font-size: 22px;
     font-weight: bold;
     margin-top: 10px;
@@ -73,14 +73,14 @@
     padding: 10px 20px;
     font-size: 16px;
     font-weight: 600;
-    color: var(--maincolor);
+    color: var(--btncolor);
     cursor: pointer;
     border: none;
     background: none;
 }
 
 .tab.active {
-    border-bottom: 2px solid var(--maincolor);
+    border-bottom: 2px solid var(--btncolor);
 }
 
 .tab-content {
@@ -114,7 +114,7 @@
 }
 
 .info-name {
-    color: var(--maincolor);
+    color: var(--btncolor);
     font-size: 24px;
     line-height: 36px;
     font-weight: bold;
@@ -131,7 +131,7 @@
 .experience-title {
     font-size: 20px;
     line-height: 30px;
-    color: var(--maincolor);
+    color: var(--btncolor);
     font-weight: 600;
 }
 
@@ -150,7 +150,7 @@
     background-image: url(/assets/img/backgroung-pattern-1.png);
     gap: 10px;
     margin-bottom: 30px;
-    border: 1px solid var(--maincolor);
+    border: 1px solid var(--btncolor);
 }
 
 .education-item span,
@@ -158,7 +158,7 @@
     font-size: 15px;
     line-height: 24px;
     font-weight: 600;
-    color: var(--maincolor);
+    color: var(--btncolor);
 }
 
 .education-item p,
@@ -166,7 +166,7 @@
     font-size: 16px;
     line-height: 24px;
     font-weight: 600;
-    color: #666;
+    color: var(--textcolor);
 }
 
 .experience-item {
@@ -207,7 +207,7 @@
 .date-select {
     margin-top: 10px;
     background-color: #e0f7fa;
-    border: 1px solid var(--maincolor);
+    border: 1px solid var(--btncolor);
     padding: 10px;
     border-radius: 5px;
     width: 100%;
@@ -223,11 +223,11 @@
     display: flex;
     gap: 10px;
     text-transform: capitalize;
-    color: var(--maincolor);
+    color: var(--btncolor);
 }
 
 .submit-button {
-    background-color: var(--maincolor);
+    background-color: var(--btncolor);
     color: white;
     font-weight: 600;
     padding: 10px;
@@ -250,7 +250,7 @@
 .section-title {
     font-size: 20px;
     line-height: 30px;
-    color: var(--maincolor);
+    color: var(--btncolor);
     font-weight: 600;
     margin-bottom: 20px;
 }
@@ -278,7 +278,7 @@
     font-size: 15px;
     line-height: 24px;
     font-weight: 600;
-    color: var(--maincolor);
+    color: var(--btncolor);
 }
 
 .degree,
@@ -294,6 +294,25 @@
     font-size: 14px;
     line-height: 20px;
     font-weight: 600;
+    color: var(--textcolor);
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-doctor-link {
+    padding: 8px;
+    background-color: var(--btncolor);
+    color: white;
+    border-radius: 7px;
+    font-size: 1.7rem;
+}
+
+.contact-doctor-link:hover {
+    background-color: var(--secondcolor);
     color: var(--textcolor);
 }
 

@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   submitButton.addEventListener("click", async () => {
     const doctorId = document.getElementById("doctorId").value;
+    const doctorPhone = document
+      .querySelector(".profile-info .bio")
+      .textContent.trim();
     const appointmentDateStr = sidePanel.querySelector(".date-select").value;
     const ticketPrice = parseFloat(
       sidePanel
@@ -65,15 +68,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
 
       if (response.ok) {
-        Toastify({
-          text: "Cita agendada exitosamente.",
-          duration: 3000,
-          close: true,
-          gravity: "top",
-          position: "right",
-          backgroundColor: "#4CAF50",
-        }).showToast();
-        window.location.href = `/ticket/${data.ticket._id}`;
+        Swal.fire({
+          title: "Cita agendada exitosamente",
+          text: "Si la cita médica es presencial puedes pagar en el sitio de la consulta pero si la cita es online debes ponerte en contacto con el médico para acordar el medio de pago.",
+          icon: "success",
+        });
       } else {
         Toastify({
           text: `Error al agendar la cita: ${data.message}`,

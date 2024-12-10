@@ -6,6 +6,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    margin-top: 75px;
 }
 
 .home {
@@ -23,7 +24,7 @@
 
 .home-left-content span {
     font-size: 2rem;
-    color: var(--maincolor);
+    color: var(--btncolor);
     padding: 1rem 0;
     font-weight: bolder;
 }
@@ -50,20 +51,28 @@
 .home-btn a {
     display: inline-block;
     padding: 1.5rem 3rem;
-    background-color: var(--maincolor);
     font-size: 1.7rem;
-    color: white;
+    color: var(--btncolor);
+    font-weight: 600;
     transition: 0.5s ease;
+    border: 1px solid var(--btncolor);
+    border-radius: 5px;
+}
+
+.home-btn a:hover {
+    background-color: var(--btncolor);
+    color: white;
 }
 
 .homebtnsec {
     background: transparent !important;
-    color: var(--textcolor) !important;
-    border: 1px solid var(--maincolor);
+    color: var(--btncolor) !important;
+    border: 1px solid var(--btncolor);
+    border-radius: 5px;
 }
 
 .homebtnsec:hover {
-    background-color: var(--secondcolor) !important;
+    background-color: var(--btncolor) !important;
     color: white !important;
 }
 
@@ -105,13 +114,13 @@
 .inner-technology span {
     width: 0;
     height: 100%;
-    background-color: var(--maincolor);
+    background-color: white;
+    opacity: 0.5;
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
     transition: 0.5s;
-
 }
 
 .inner-technology:hover span {
@@ -119,21 +128,20 @@
 }
 
 .inner-technology:hover i {
-
-    color: white;
+    color: var(--textcolor);
 }
 
 .inner-technology:hover h2 {
-    color: white;
+    color: var(--btncolor);
 }
 
 .inner-technology:hover p {
-    color: white;
+    color: var(--textcolor);
 }
 
 .inner-technology i {
     font-size: 48px;
-    color: var(--maincolor);
+    color: var(--btncolor);
 }
 
 .inner-technology h2 {
@@ -154,16 +162,14 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
 }
 
 .main-about .about-heading {
     text-align: center;
     font-size: 40px;
     font-weight: bolder;
-    color: var(--maincolor);
-    border-bottom: 2px solid var(--secondcolor);
-    width: 200px;
+    color: var(--btncolor);
+    width: 700px;
     margin: 0 auto;
     padding: 2rem 0;
 
@@ -196,7 +202,7 @@
 .about-right-content h2 {
     font-size: 30px;
     padding: 1.5rem 0;
-    color: black;
+    color: var(--textcolor);
     font-weight: bolder;
     line-height: 4rem;
 }
@@ -217,7 +223,7 @@
 .aboutbtn {
     padding: 1.5rem 3rem;
     background-color: transparent;
-    border: 1px solid var(--maincolor);
+    border: 1px solid var(--btncolor);
     margin-top: 0.5rem;
     cursor: pointer;
     font-size: 1.5rem;
@@ -248,5 +254,8 @@
 
     .about-right-content h2 {
         font-size: 20px;
+    }
+    .main-about .about-heading {
+        width: 300px;
     }
 }

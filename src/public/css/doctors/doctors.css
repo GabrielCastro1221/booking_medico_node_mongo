@@ -12,7 +12,7 @@
     font-size: 30px;
     text-align: center;
     margin: 4rem;
-    color: var(--maincolor);
+    color: var(--btncolor);
 }
 
 .main-inner-doctor {
@@ -35,7 +35,7 @@
     width: 100%;
     height: 300px;
     object-fit: cover;
-    border: 0.7rem solid var(--maincolor);
+    border: 0.7rem solid var(--btncolor);
 }
 
 .doc-poster img:hover {
@@ -57,7 +57,7 @@
     font-size: 2rem;
     margin: 0.5rem;
     border: 1px solid var(--secondcolor);
-    color: var(--maincolor);
+    color: var(--btncolor);
     padding: 1rem;
     background-color: white;
     cursor: pointer;
@@ -68,7 +68,7 @@
     color: var(--secondcolor);
     border-radius: 10px !important;
     transform: scale(1.2);
-    border: 1px solid var(--maincolor);
+    border: 1px solid var(--btncolor);
 }
 
 .doc-poster::after {
@@ -106,7 +106,7 @@
 .doc-details i {
     padding: 0.5rem;
     font-size: 2.5rem;
-    color: var(--maincolor);
+    color: var(--btncolor);
     cursor: pointer;
 }
 
