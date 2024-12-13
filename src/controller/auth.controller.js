@@ -79,7 +79,14 @@ class AuthController {
         });
       }
       await user.save();
-      
+      if (role === "doctor") {
+        console.log("Registrando un doctor y enviando correo...");
+        await mailer.enviarCorreoBienvenidaDoctor(email);
+        await mailer.enviarCorreoNuevoDoctor({
+          name,
+          email,
+      });
+      }      
       return res
         .status(200)
         .json({ status: true, message: "Registro Exitoso", user: user });

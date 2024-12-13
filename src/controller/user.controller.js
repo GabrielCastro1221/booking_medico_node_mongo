@@ -2,6 +2,9 @@ const userModel = require("../models/user.model");
 const bookingModel = require("../models/booking.model");
 const doctorModel = require("../models/doctor.model");
 const ticketModel = require("../models/ticket.model");
+const EmailManager = require("../services/mailer");
+
+const mailer = new EmailManager();
 
 class UserController {
   getAllUsers = async (req, res) => {
@@ -93,7 +96,7 @@ class UserController {
         .json({ status: false, message: "error al eliminar los usuario" });
     }
   };
-
+  
   createAppointment = async (req, res) => {
     try {
       const { userId, doctorId, appointment_date, ticket_price, type } =
@@ -138,15 +141,46 @@ class UserController {
       await userModel.findByIdAndUpdate(userId, {
         $push: { booking: nuevaCita._id },
       });
+      const doctor = await doctorModel.findById(doctorId);
+      const patient = await userModel.findById(userId);
+
+      if (doctor && patient) {
+        if (type === "presencial") {
+          await mailer.enviarCorreoCitaAgendada(doctor.email, {
+            patientName: patient.name,
+            patientEmail: patient.email,
+            appointmentDate: appointment_date,
+            ticketPrice: ticket_price,
+            type,
+          });
+        } else if (type === "online") {
+          await mailer.enviarCorreoCitaOnline(doctor.email, {
+            patientName: patient.name,
+            patientEmail: patient.email,
+            appointmentDate: appointment_date,
+            ticketPrice: ticket_price,
+            bookingId: nuevaCita._id,
+          });
+        }
+
+        await mailer.enviarCorreoCitaPaciente(patient.email, {
+          doctorName: doctor.name,
+          doctorPhone: doctor.phone,
+          appointmentDate: appointment_date,
+          ticketPrice: ticket_price,
+          type,
+        });
+      }
       res.status(201).json({
         message: "Cita agendada exitosamente.",
         cita: nuevaCita,
         ticket: nuevoTicket,
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({ message: "Error al agendar la cita.", error: error.message });
+      res.status(500).json({
+        message: "Error al agendar la cita.",
+        error: error.message,
+      });
     }
   };
 
@@ -173,7 +207,6 @@ class UserController {
         data: { ...rest, bookings: user.booking },
       });
     } catch (error) {
-      
       res.status(500).json({
         error: error.message,
         message: "Error al obtener la informacion del perfil",
@@ -244,6 +277,11 @@ class UserController {
         { role: newRol },
         { new: true }
       );
+
+      if (newRol === "admin") {
+        await mailer.enviarCorreoCambioRolAdmin(user.email, user.name);
+      }
+
       res.status(200).json(updatedUser);
     } catch (error) {
       console.error("Error cambiando el rol:", error);

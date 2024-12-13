@@ -1,5 +1,8 @@
 const doctorModel = require("../models/doctor.model");
 const bookingModel = require("../models/booking.model");
+const EmailManager = require("../services/mailer");
+
+const mailer = new EmailManager();
 
 class DoctorController {
   getAllDoctors = async (req, res) => {
@@ -186,6 +189,9 @@ class DoctorController {
         { isApproved: "approved" },
         { new: true }
       );
+
+      await mailer.enviarCorreoAprobacionDoctor(doctor.email, doctor.name);
+
       return res.status(200).json({
         success: true,
         message: `Estado de aprobación actualizado a "approved"`,
@@ -215,6 +221,9 @@ class DoctorController {
         { isApproved: "cancelled" },
         { new: true }
       );
+
+      await mailer.enviarCorreoCancelacionDoctor(doctor.email, doctor.name);
+
       return res.status(200).json({
         success: true,
         message: `Estado de aprobación actualizado a "cancelled"`,
