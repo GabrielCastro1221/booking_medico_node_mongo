@@ -20,6 +20,5 @@ router.get("/contacto", views.renderContact);
 router.get("/page-not-found", views.renderNotFound);
 router.get("/acceso-denegado", views.renderAccessDenied);
 router.get("/video-consulta/:id", views.renderMeeting);
-router.get("/ticket/:id", views.renderTicket);
 
 module.exports = router;

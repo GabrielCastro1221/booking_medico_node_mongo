@@ -3,18 +3,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
 }
 
 .container-contact {
     position: relative;
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     padding: 40px;
     display: flex;
     gap: 80px;
     border-radius: 10px;
-    background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 

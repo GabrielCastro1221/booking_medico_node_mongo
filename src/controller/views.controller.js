@@ -141,19 +141,6 @@ class ViewsController {
       res.render("404");
     }
   };
-
-  renderTicket = async (req, res) => {
-    const { id } = req.params;
-    try {
-      const ticket = await ticketModel.findById(id).lean();
-      if (!ticket) {
-        return res.render("404", { message: "ticket no encontrado" });
-      }
-      res.render("ticket", { ticket });
-    } catch (err) {
-      res.render("404", { message: "Error al obtener los datos del doctor" });
-    }
-  };
 }
 
 module.exports = ViewsController;

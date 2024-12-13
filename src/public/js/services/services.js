@@ -4,39 +4,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const services = [
     {
       icon: "fa-solid fa-truck-medical",
-      title: "Health Check",
+      title: "Agendar citas medicas",
       description:
-        "We offer extensive medical procedures to outbound & inbound patients what it is and we are very proud achievement staff.",
+        "En nuestra plataforma, los pacientes tienen la posibilidad de agendar citas médicas tanto de manera virtual como presencial. Nuestra plataforma garantiza que cada paciente pueda acceder a la atención médica de calidad que necesita.",
     },
     {
       icon: "fa-regular fa-hospital",
-      title: "Health Check",
+      title: "Perfil de doctores",
       description:
-        "We offer extensive medical procedures to outbound & inbound patients what it is and we are very proud achievement staff.",
+        "Cada doctor deberá diligenciar un formulario en el que se almacenará la información sobre su especialidad y los horarios disponibles para las citas médicas. Cuando el perfil sea aprobado, podrá recibir citas de sus pacientes.",
     },
     {
       icon: "fa-regular fa-heart",
-      title: "Health Check",
+      title: "Metodos De Pagos",
       description:
-        "We offer extensive medical procedures to outbound & inbound patients what it is and we are very proud achievement staff.",
-    },
-    {
-      icon: "fa-solid fa-notes-medical",
-      title: "Health Check",
-      description:
-        "We offer extensive medical procedures to outbound & inbound patients what it is and we are very proud achievement staff.",
-    },
-    {
-      icon: "fa-solid fa-list-check",
-      title: "Health Check",
-      description:
-        "We offer extensive medical procedures to outbound & inbound patients what it is and we are very proud achievement staff.",
-    },
-    {
-      icon: "fa-solid fa-user-doctor",
-      title: "Health Check",
-      description:
-        "We offer extensive medical procedures to outbound & inbound patients what it is and we are very proud achievement staff.",
+        "Si se agenda una cita presencial el paciente podra realizar el pago en el sitio de la consulta medica, pero si la cita es online el pago debera hacerse por la pasarela de pago de la plataforma para que el enlace de la video consulta se active.",
     },
   ];
 
