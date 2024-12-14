@@ -5,12 +5,14 @@
     <h2>Nuestro Equipo</h2>
   </div>
 
-  <section class="body-search">
+<section class="body-search">
     <div class="search-container">
-      <input class="in" type="search" placeholder="Buscar Doctor">
-      <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <form id="search-form" action="/buscar-doctor" method="get">
+            <input class="in" type="search" name="query" placeholder="Buscar Doctor">
+            <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
     </div>
-  </section>
+</section>
 
   <div class="main-inner-doctor">
     {{#if doctors}}
@@ -32,3 +34,5 @@
     {{/if}}
   </div>
 </div>
+
+<script src="/js/doctors/doctors.js"></script>

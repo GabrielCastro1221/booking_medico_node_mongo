@@ -118,6 +118,27 @@ class ViewsController {
     }
   };
 
+  renderSearchDoctor = async (req, res) => {
+    const { query } = req.query;
+    try {
+      const doctors = await doctorModel
+        .find({
+          isApproved: "approved",
+          name: { $regex: query, $options: "i" },
+        })
+        .lean();
+      if (!doctors || doctors.length === 0) {
+        return res.render("doctors", {
+          doctors: null,
+          message: "Doctores no encontrados",
+        });
+      }
+      res.render("doctors", { doctors });
+    } catch (err) {
+      res.render("404");
+    }
+  };
+
   renderUserProfile = (req, res) => {
     try {
       res.render("userProfile");
